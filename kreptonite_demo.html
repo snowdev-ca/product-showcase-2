@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRÊPTONITE — Ottawa's Boldest Crepe Truck</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --yellow: #F5C518;
+    --yellow-dark: #D4A800;
+    --black: #0A0A0A;
+    --offblack: #111111;
+    --gray: #1A1A1A;
+    --text-muted: #888;
+    --white: #FFFFFF;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #222;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: var(--yellow);
+  }
+  .nav-logo span { color: var(--white); }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--yellow); }
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 60%, rgba(245,197,24,0.08) 0%, transparent 70%);
+  }
+  .hero-eyes { width: 280px; margin-bottom: 2rem; opacity: 0.95; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 8rem);
+    letter-spacing: 6px;
+    line-height: 0.9;
+    color: var(--yellow);
+    text-shadow: 0 0 60px rgba(245,197,24,0.3);
+  }
+  .hero-title span {
+    display: block;
+    color: var(--white);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    letter-spacing: 8px;
+    margin-top: 0.5rem;
+  }
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 400px;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    padding: 0.85rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid #444;
+    padding: 0.85rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+  .badge-demo {
+    display: inline-block;
+    background: rgba(245,197,24,0.12);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--yellow);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 1.5rem;
+  }
+  section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 1.5rem 0 2.5rem;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .menu-card {
+    background: var(--gray);
+    border: 1px solid #222;
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .menu-card:hover { border-color: var(--yellow); transform: translateY(-3px); }
+  .menu-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+  }
+  .menu-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .menu-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .menu-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; }
+  .menu-price { font-size: 1.1rem; font-weight: 500; color: var(--yellow); }
+
+  /* MENU CATEGORY HEADERS */
+  .menu-category {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .menu-category-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .menu-category-line {
+    flex: 1;
+    height: 1px;
+    background: #222;
+  }
+
+  .location-section {
+    background: var(--offblack);
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 5rem 2rem;
+  }
+  .location-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .schedule-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1px; }
+  .schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .schedule-day {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .schedule-time { font-size: 0.9rem; color: var(--white); text-align: right; }
+  .schedule-time small { display: block; font-size: 0.75rem; color: var(--text-muted); }
+
+  .map-wrap {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #222;
+  }
+  .map-wrap iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    display: block;
+    filter: invert(90%) hue-rotate(180deg);
+  }
+  .today-card {
+    margin-top: 1rem;
+    background: var(--gray);
+    border: 1px solid #222;
+    padding: 1.25rem 1.5rem;
+  }
+  .today-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 0.4rem;
+  }
+  .today-loc { font-size: 1.1rem; font-weight: 500; }
+  .today-hours { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+  .contact-form {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--gray);
+    border: 1px solid #2a2a2a;
+    color: var(--white);
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--yellow); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--gray); }
+
+  footer {
+    background: var(--offblack);
+    border-top: 1px solid #1a1a1a;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--yellow); }
+  .footer-copy { font-size: 0.75rem; color: #444; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">KRÊP<span>TONITE</span></div>
+  <ul>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#location">Find Us</a></li>
+    <li><a href="#catering">Catering</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-eyes" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="280" height="120" fill="#0A0A0A" rx="4"/>
+    <rect width="280" height="120" fill="#F5C518" rx="4" opacity="0.08"/>
+    <ellipse cx="80" cy="60" rx="55" ry="42" fill="#F5C518"/>
+    <ellipse cx="200" cy="60" rx="55" ry="42" fill="#F5C518"/>
+    <ellipse cx="80" cy="60" rx="30" ry="30" fill="#1a6ed8"/>
+    <ellipse cx="200" cy="60" rx="30" ry="30" fill="#1a6ed8"/>
+    <ellipse cx="80" cy="60" rx="18" ry="18" fill="#0A0A0A"/>
+    <ellipse cx="200" cy="60" rx="18" ry="18" fill="#0A0A0A"/>
+    <ellipse cx="86" cy="53" rx="6" ry="6" fill="white" opacity="0.9"/>
+    <ellipse cx="206" cy="53" rx="6" ry="6" fill="white" opacity="0.9"/>
+    <line x1="25" y1="25" x2="135" y2="15" stroke="#0A0A0A" stroke-width="10" stroke-linecap="round"/>
+    <line x1="145" y1="15" x2="255" y2="25" stroke="#0A0A0A" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="badge-demo">Demo Preview — Ottawa, ON</div>
+  <h1 class="hero-title">
+    KRÊPTONITE
+    <span>Ottawa's Boldest Crepe Truck</span>
+  </h1>
+  <p class="hero-sub">Street Style Gourmet. <br> Feed the hero inside you.</p>
+</div>
+
+<section id="menu">
+  <div class="section-label">What We Serve</div>
+  <h2 class="section-title">The Menu</h2>
+  <div class="divider"></div>
+
+  <div class="menu-grid">
+
+    <div class="menu-category">
+      <span class="menu-category-label">Savoury Crepes</span>
+      <div class="menu-category-line"></div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-tag">Fan Fave</div>
+      <span class="menu-emoji">🌭</span>
+      <div class="menu-name">Krêpedog</div>
+      <p class="menu-desc">Grilled Dog, Mozzarella / Cheddar Melt, Ketchup / Mustard / Relish.</p>
+      <div class="menu-price">$8</div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🍕</span>
+      <div class="menu-name">Krêpizza</div>
+      <p class="menu-desc">Italian Sausage, Mozzarella & Cheddar Melt, Marinara Sauce, Fresh Basil, Cracked Pepper.</p>
+      <div class="menu-price">$11</div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🍔</span>
+      <div class="menu-name">Krêpburger</div>
+      <p class="menu-desc">Grilled Beef and Onion, Cheddar, House Sauce, Fresh Lettuce, Pickle Kick.</p>
+      <div class="menu-price">$16</div>
+    </div>
+
+    <div class="menu-category">
+      <span class="menu-category-label">Sweet Crepes</span>
+      <div class="menu-category-line"></div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🍓</span>
+      <div class="menu-name">Berry Nice!</div>
+      <p class="menu-desc">Strawberry / Raspberry / Blueberry, Secret Sauce.</p>
+      <div class="menu-price">$16</div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🍫</span>
+      <div class="menu-name">Sugar and Spice</div>
+      <p class="menu-desc">Cinnamon, Brown Sugar, Fresh Squeeze of Lemon and Zest</p>
+      <div class="menu-price">$7</div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🥧</span>
+      <div class="menu-name">Krêpple Pie</div>
+      <p class="menu-desc">Caramelized Apples, Cinnamon, Brown Sugar, Lemon Sparkle.</p>
+      <div class="menu-price">$14</div>
+    </div>
+
+    <div class="menu-category">
+      <span class="menu-category-label">Sides & Drinks</span>
+      <div class="menu-category-line"></div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-emoji">🍟</span>
+      <div class="menu-name">Hand-cut Fries</div>
+      <p class="menu-desc">Small / Large</p>
+      <div class="menu-price">$6-9</div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-tag">Fan Fave</div>
+      <span class="menu-emoji">🍋</span>
+      <div class="menu-name">Lemonade</div>
+      <p class="menu-desc">Fresh Homemade Lemonade with Mint.</p>
+      <div class="menu-price">$5</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="location-section" id="schedule">
+  <div class="location-inner">
+    <div>
+      <h2 class="section-title">This Week's Schedule</h2>
+      <div class="divider"></div>
+      <div class="schedule-list">
+        <div class="schedule-item">
+          <span class="schedule-day">Monday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Tuesday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Wednesday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Thursday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Friday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Saturday</span>
+          <span class="schedule-time"><small>11am – 9pm</small></span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-day">Sunday</span>
+          <span class="schedule-time"><small>11am – 6pm</small></span>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.8rem; color:#555;">Follow us on Instagram for real-time location updates.</p>
+    </div>
+
+    <div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22404.827901290097!2d-75.5995696!3d45.4173348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0f352a52ee77%3A0xcde8aaaf9e232af0!2sKR%C3%8APETONITE!5e0!3m2!1sen!2sca!4v1779585102093!5m2!1sen!2sca"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-logo">KRÊPTONITE</div>
+  <p style="font-size: 0.8rem; color: var(--text-muted);">Ottawa, ON · Street Crepes & Fresh Lemonade</p>
+  <div class="footer-links">
+    <a href="#menu">Menu</a>
+    <a href="#schedule">Schedule</a>
+    <a href="https://www.instagram.com/krepetonite.ottawa" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+  <p class="footer-copy">© 2025 Krêptonite Food Truck. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
