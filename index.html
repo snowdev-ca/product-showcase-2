@@ -4,6 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KRÊPTONITE — Ottawa's Boldest Crepe Truck</title>
+
+<!-- SEO: Meta description -->
+<meta name="description" content="Krêptonite is Ottawa's boldest street crepe truck. Savoury & sweet crepes, hand-cut fries, and fresh lemonade. Find us around Ottawa — check Instagram for today's location.">
+
+<!-- SEO: Canonical URL (update with real domain when live) -->
+<link rel="canonical" href="https://snowdev-ca.github.io/product-showcase-2/index.html">
+
+<!-- SEO: Open Graph (social sharing) -->
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="KRÊPTONITE — Ottawa's Boldest Crepe Truck">
+<meta property="og:description" content="Savoury & sweet crepes, hand-cut fries, and fresh lemonade. Ottawa's boldest street food truck.">
+<meta property="og:url" content="https://snowdev-ca.github.io/product-showcase-2/index.html">
+<meta property="og:locale" content="en_CA">
+
+<!-- SEO: Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KRÊPTONITE — Ottawa's Boldest Crepe Truck">
+<meta name="twitter:description" content="Savoury & sweet crepes, hand-cut fries, and fresh lemonade. Ottawa's boldest street food truck.">
+
+<!-- SEO: Structured Data — Local Food Truck -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodTruck",
+  "name": "Krêptonite",
+  "description": "Ottawa's boldest street crepe truck. Savoury and sweet crepes, hand-cut fries, and fresh lemonade.",
+  "url": "https://www.kreptonite.ca",
+  "servesCuisine": "Crepes",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ottawa",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "sameAs": [
+    "https://www.instagram.com/krepetonite.ottawa"
+  ],
+  "menu": "https://snowdev-ca.github.io/product-showcase-2/index.html#menu",
+  "hasMap": "https://maps.app.goo.gl/KiwkY4dimmZiSRpc8"
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -205,8 +248,6 @@
   }
   .menu-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; }
   .menu-price { font-size: 1.1rem; font-weight: 500; color: var(--yellow); }
-
-  /* MENU CATEGORY HEADERS */
   .menu-category {
     grid-column: 1 / -1;
     display: flex;
@@ -226,7 +267,6 @@
     height: 1px;
     background: #222;
   }
-
   .location-section {
     background: var(--offblack);
     border-top: 1px solid #1a1a1a;
@@ -258,7 +298,6 @@
   }
   .schedule-time { font-size: 0.9rem; color: var(--white); text-align: right; }
   .schedule-time small { display: block; font-size: 0.75rem; color: var(--text-muted); }
-
   .map-wrap {
     width: 100%;
     overflow: hidden;
@@ -286,7 +325,6 @@
   }
   .today-loc { font-size: 1.1rem; font-weight: 500; }
   .today-hours { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
-
   .contact-form {
     margin-top: 2.5rem;
     display: flex;
@@ -321,7 +359,6 @@
   .form-group select:focus { border-color: var(--yellow); }
   .form-group textarea { resize: vertical; min-height: 100px; }
   .form-group select option { background: var(--gray); }
-
   footer {
     background: var(--offblack);
     border-top: 1px solid #1a1a1a;
@@ -367,7 +404,7 @@
 
 <div class="hero">
   <div class="hero-bg"></div>
-  <svg class="hero-eyes" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-eyes" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krêptonite logo — bold eyes on yellow background">
     <rect width="280" height="120" fill="#0A0A0A" rx="4"/>
     <rect width="280" height="120" fill="#F5C518" rx="4" opacity="0.08"/>
     <ellipse cx="80" cy="60" rx="55" ry="42" fill="#F5C518"/>
@@ -516,13 +553,13 @@
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22404.827901290097!2d-75.5995696!3d45.4173348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0f352a52ee77%3A0xcde8aaaf9e232af0!2sKR%C3%8APETONITE!5e0!3m2!1sen!2sca!4v1779585102093!5m2!1sen!2sca"
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Krêptonite food truck location on Google Maps">
         </iframe>
       </div>
     </div>
   </div>
 </div>
-
 
 <footer>
   <div class="footer-logo">KRÊPTONITE</div>
